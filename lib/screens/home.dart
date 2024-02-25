@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stylemix_test_app/models/user.dart';
 import 'package:stylemix_test_app/screens/dashboard/dashboard.dart';
+import 'package:stylemix_test_app/screens/profile/profile.dart';
 import 'package:stylemix_test_app/theme/style.dart';
 
 class HomeController extends StatefulWidget {
@@ -32,7 +34,7 @@ class _HomeControllerState extends State<HomeController> {
       case 0:
         return const Dashboard();
       case 1:
-        return const SizedBox();
+        return ProfileController(user: User(username: "Shohjahon", age: 20, country: 'Uzbekistan, Tashkent'));
 
       default:
         return Container(
@@ -51,7 +53,7 @@ class _HomeControllerState extends State<HomeController> {
           iconSize: 24.0,
           items: tabItems,
           type: BottomNavigationBarType.fixed,
-          currentIndex: 0,
+          currentIndex: pageIndex,
           onTap: onTapNavigator,
           selectedItemColor: Style.colors.primary,
           unselectedItemColor: Style.colors.blue4,
