@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "username": "john_doe",
+      "login": "john",
+      "password": "password123",
+      "age": 30,
+      "country": "USA"
+    },
+    {
+      "id": 2,
+      "username": "alice_smith",
+      "login": "alice",
+      "password": "pass@123",
+      "age": 25,
+      "country": "Canada"
+    },
+    {
+      "id": 3,
+      "username": "mike_jackson",
+      "login": "mike",
+      "password": "securePassword",
+      "age": 40,
+      "country": "UK"
+    }
+  ]

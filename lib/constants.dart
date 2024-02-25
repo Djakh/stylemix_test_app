@@ -18,7 +18,7 @@ class CustomStaticShowToast {
     toast.removeCustomToast();
     toast.showToast(
         child: CustomToast(title: title, isError: isError),
-        gravity: ToastGravity.CENTER,
+        gravity: ToastGravity.TOP,
         toastDuration: const Duration(seconds: 2));
   }
 }

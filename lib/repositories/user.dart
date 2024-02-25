@@ -1,16 +1,23 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-import 'package:stylemix_test_app/models/users.dart';
-import 'package:stylemix_test_app/repositories/util/utils.dart';
+import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
+import 'package:flutter/services.dart';
+import 'package:stylemix_test_app/models/user.dart';
 
 class UserRepository {
-  static Future<User> fetchUser(http.Client client) async {
-    // final response = await RepositoryUtils.fetchData(client, "${Api.users}/me");
+  static Future<User?> getUser() async {
+    User? user;
+    return user;
+  }
 
-    // Parse response.
-    // var data = json.decode(response.body);
+  static Future<User?> login(String login, String password) async {
+    String jsonData = await rootBundle.loadString('assets/json/users.json');
 
-    return User.fromJson({});
+    List<dynamic> jsonList = json.decode(jsonData);
+    List<User> userList = jsonList.map((json) => User.fromJson(json)).toList();
+
+    User? user = userList.firstWhereOrNull((user) => user.login == login && user.password == password);
+
+    return user;
   }
 }
