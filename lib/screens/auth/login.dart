@@ -77,9 +77,7 @@ class _LoginControllerState extends State<LoginController> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text('Authentication'),
-      ),
+      appBar: AppBar(title: Text('Authentication', style: Style.body2w4)),
       body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Form(
