@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylemix_test_app/blocs/user/user_bloc.dart';
 import 'package:stylemix_test_app/constants.dart';
 import 'package:stylemix_test_app/routes/routes.dart';
-import 'package:stylemix_test_app/screens/home.dart';
+import 'package:stylemix_test_app/screens/switcher.dart';
 import 'package:stylemix_test_app/size_config.dart';
 import 'package:stylemix_test_app/theme/theme.dart';
 
@@ -30,12 +30,9 @@ class _StylemixTestAppState extends State<StylemixTestApp> {
           MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), child: child!),
       theme: theme,
       navigatorObservers: [routeObserver],
-      localeResolutionCallback: (Locale? locale, Iterable<Locale> supportedLocales) {
-        return locale;
-      },
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router?.generator,
-      home: const HomeController());
+      home: const SwitcherController());
   @override
   Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) {
         SizeConfig().init(constraints);
