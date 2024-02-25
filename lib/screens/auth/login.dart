@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylemix_test_app/blocs/user/user_bloc.dart';
 import 'package:stylemix_test_app/cells/button.dart';
 import 'package:stylemix_test_app/cells/text_field.dart';
-import 'package:stylemix_test_app/constants.dart';
 import 'package:stylemix_test_app/theme/style.dart';
 
 class LoginController extends StatefulWidget {
@@ -17,14 +16,6 @@ class _LoginControllerState extends State<LoginController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _loginController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  /// --- Listeners ----
-
-  void userListener(context, state) {
-    if (state is UserFailedState) {
-      CustomStaticShowToast.showToast(state.exception.toString(), isError: true);
-    }
-  }
 
   /// --- Methods ---
 
@@ -66,8 +57,7 @@ class _LoginControllerState extends State<LoginController> {
   Widget get passwordTextFiled =>
       TextInputField.obscure(controller: _passwordController, validator: passwordValidator, title: "Password");
 
-  Widget get loginButton => BlocConsumer<UserBloc, UserState>(
-      listener: userListener,
+  Widget get loginButton => BlocBuilder<UserBloc, UserState>(
       builder: (context, state) => Button.primary(
           onPressed: checkLoginValidation,
           spinner: state is UserLoadingState,

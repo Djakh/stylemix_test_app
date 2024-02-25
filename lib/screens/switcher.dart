@@ -22,8 +22,19 @@ class _SwitcherControllerState extends State<SwitcherController> {
     super.initState();
   }
 
+  /// --- Listeners ----
+
+  void userListener(context, state) {
+    print("my state is $state");
+    if (state is UserFailedState) {
+      CustomStaticShowToast.showToast(state.exception.toString(), isError: true);
+    }
+  }
+
   /// --- Widgets ---
-  Widget get userStateChecker => BlocBuilder<UserBloc, UserState>(builder: (context, state) {
+  Widget get userStateChecker => BlocConsumer<UserBloc, UserState>(
+      listener: userListener,
+      builder: (context, state) {
         if (state is UserCompliedState && state.user == null) return const LoginController();
         if (state is UserFailedState) return const LoginController();
         if (state is UserCompliedState && state.user != null) return const HomeController();
